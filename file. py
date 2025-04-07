@@ -1,0 +1,50 @@
+# Import necessary libraries
+import random
+
+# Sample cryptocurrency data (for demonstration)
+crypto_data = {
+    "Bitcoin": {"price": 45000, "trend": "up", "energy_efficiency": "low", "project_viability": "high"},
+    "Ethereum": {"price": 3000, "trend": "down", "energy_efficiency": "medium", "project_viability": "high"},
+    "Cardano": {"price": 2.5, "trend": "up", "energy_efficiency": "high", "project_viability": "medium"},
+    "Dogecoin": {"price": 0.25, "trend": "up", "energy_efficiency": "low", "project_viability": "low"},
+}
+
+# Function to analyze cryptocurrency and provide advice
+def analyze_crypto(crypto_name):
+    crypto = crypto_data.get(crypto_name)
+    if not crypto:
+        return "Sorry, I don't have data on that cryptocurrency."
+
+    advice = f"Analysis for {crypto_name}:\n"
+    advice += f"Current Price: ${crypto['price']}\n"
+    
+    if crypto['trend'] == 'up':
+        advice += "Price trend is upward. This could be a good time to invest!\n"
+    else:
+        advice += "Price trend is downward. Consider waiting before investing.\n"
+        
+    if crypto['energy_efficiency'] == 'high':
+        advice += "This cryptocurrency is energy-efficient, which is good for sustainability.\n"
+    else:
+        advice += "This cryptocurrency has low energy efficiency. Consider the environmental impact.\n"
+        
+    if crypto['project_viability'] == 'high':
+        advice += "The project has high viability, indicating a strong potential for growth.\n"
+    else:
+        advice += "The project has low viability. Be cautious with your investment.\n"
+        
+    return advice
+
+# Chatbot interaction
+def chatbot():
+    print("Welcome to your Cryptocurrency Advisor Chatbot! 🌟")
+    while True:
+        user_input = input("Which cryptocurrency would you like advice on? (Type 'exit' to quit) ").title()
+        if user_input.lower() == 'exit':
+            print("Thank you for using the Cryptocurrency Advisor Chatbot. Goodbye!")
+            break
+        response = analyze_crypto(user_input)
+        print(response)
+
+# Run the chatbot
+chatbot()
